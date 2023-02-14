@@ -1,0 +1,196 @@
+CREATE DATABASE  IF NOT EXISTS `dbzalihe_172` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `dbzalihe_172`;
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+--
+-- Host: localhost    Database: dbzalihe_172
+-- ------------------------------------------------------
+-- Server version	8.0.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `dobavljaci`
+--
+
+DROP TABLE IF EXISTS `dobavljaci`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dobavljaci` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `naziv` varchar(255) DEFAULT NULL,
+  `iib` varchar(255) DEFAULT NULL,
+  `pdv` int DEFAULT NULL,
+  `broj_telefona` varchar(255) DEFAULT NULL,
+  `kontakt_osoba` varchar(255) DEFAULT NULL,
+  `email_adresa` varchar(255) DEFAULT NULL,
+  `datum_pocetka` date DEFAULT NULL,
+  `datum_zavrsetka` date DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dobavljaci`
+--
+
+LOCK TABLES `dobavljaci` WRITE;
+/*!40000 ALTER TABLE `dobavljaci` DISABLE KEYS */;
+INSERT INTO `dobavljaci` VALUES (3,'Prvi dobavljac','980837897',15,'067849377','067335677','prvi@dobavljac.com','2023-01-12',NULL,'2023-02-11 20:27:13','2023-02-11 20:27:13'),(4,'Drugi dobavljac','57293462014',11,'067488936','067389223','drugi@dobavljac.com','2022-11-09',NULL,'2023-02-11 20:28:04','2023-02-11 20:28:04'),(5,'Treci dobavljac','0975558309',10,'065789331','067829450','treci@dobavljac.com','2023-02-04',NULL,'2023-02-11 20:28:44','2023-02-11 20:28:44');
+/*!40000 ALTER TABLE `dobavljaci` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `korisnici`
+--
+
+DROP TABLE IF EXISTS `korisnici`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `korisnici` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `korisnicko_ime` varchar(255) DEFAULT NULL,
+  `sifra` varchar(255) DEFAULT NULL,
+  `uloga` varchar(255) DEFAULT NULL,
+  `ime` varchar(255) DEFAULT NULL,
+  `prezime` varchar(255) DEFAULT NULL,
+  `broj_telefona` varchar(255) DEFAULT NULL,
+  `adresa` varchar(255) DEFAULT NULL,
+  `email_adresa` varchar(255) DEFAULT NULL,
+  `datum_zaposlenja` date DEFAULT NULL,
+  `datum_otkaza` date DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `korisnici`
+--
+
+LOCK TABLES `korisnici` WRITE;
+/*!40000 ALTER TABLE `korisnici` DISABLE KEYS */;
+INSERT INTO `korisnici` VALUES (1,'semra','$2b$10$vnOM.jh57l.6BkEhaqZgneu3Wwz1/eb3ZV.uaO4.sICAIQfy2kQO6','admin','Semra','Kermo','064839578','Zenica','semra@gmail.com','2008-07-04',NULL,'2023-02-04 21:49:34','2023-02-11 20:48:07'),(5,'admin','$2b$10$16I7/Yd0XCScYn7XcVjOf.rKfGcoNbc880Fp2bhoGO0qY7eksT1sG','admin','Admin','Admin','068904896','Admin adresa','admin@mail.com','2023-02-01',NULL,'2023-02-11 20:25:50','2023-02-11 20:49:43'),(6,'azra','$2b$10$bt3Tw7Va9te5SsjV8IG2ZuP0UiBtfo9P7CIXR4udlPF/CkgSDFzoK','zaposlenik','Azra','Kermo','065837290','Zenica','azra@gmail.com','2022-11-16',NULL,'2023-02-11 20:49:07','2023-02-11 20:49:07'),(7,'mirza','$2b$10$KfHK9CEZrhNtPar9gfaO.O.KFoiNJ9zGspu9E8tNIzXWzV9C/fTqC','zaposlenik','Mirza','Kermo','067264114','Zenica','mirza@gmail.com','2022-12-15','2023-02-11','2023-02-11 20:50:21','2023-02-11 20:50:46');
+/*!40000 ALTER TABLE `korisnici` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proizvodi`
+--
+
+DROP TABLE IF EXISTS `proizvodi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `proizvodi` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `naziv` varchar(255) DEFAULT NULL,
+  `slika_proizvoda` varchar(255) DEFAULT NULL,
+  `marza` int DEFAULT NULL,
+  `cijena` double DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `proizvodni_proces_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proizvodni_proces_id` (`proizvodni_proces_id`),
+  CONSTRAINT `proizvodi_ibfk_1` FOREIGN KEY (`proizvodni_proces_id`) REFERENCES `proizvodni_proces` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proizvodi`
+--
+
+LOCK TABLES `proizvodi` WRITE;
+/*!40000 ALTER TABLE `proizvodi` DISABLE KEYS */;
+INSERT INTO `proizvodi` VALUES (4,'Prsten','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLWk_NRSmiCxol9hlroPYv_C-N7hWCPedCLw&usqp=CAU',5,600,'2023-02-11 20:39:12','2023-02-11 20:39:12',23),(5,'Ogrlica','https://ae01.alicdn.com/kf/Hb7c6b1f030444058adcfdadd30d56e9fl/vintage-necklace-on-neck-Gold-chain-Women-s-jewelry-layered-accesories-for-girls-clothing-aesthetic-Gifts.jpg_Q90.jpg_.webp',10,2000,'2023-02-11 20:40:08','2023-02-11 20:40:08',24),(6,'Naocale','https://i.pinimg.com/originals/bc/e4/bf/bce4bf63d24e82b1a56f6a4693c44fbf.jpg',2,240,'2023-02-11 20:41:05','2023-02-11 20:41:05',23),(8,'Stol za sminkanje','https://www.wards.com/dw/image/v2/BBVM_PRD/on/demandware.static/-/Sites-colony-master-catalog/default/dw6e55dc1b/large/sub_30/sw743928_Cherry_alt.png?sw=1500&sh=1500&sm=fit',3,600,'2023-02-11 20:42:48','2023-02-11 20:42:48',24),(9,'Skulptura','https://i.ebayimg.com/thumbs/images/g/ZUoAAOSwFNRj17MF/s-l300.jpg',2,160,'2023-02-11 20:47:25','2023-02-11 20:47:25',27);
+/*!40000 ALTER TABLE `proizvodi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proizvodni_proces`
+--
+
+DROP TABLE IF EXISTS `proizvodni_proces`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `proizvodni_proces` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `naziv` varchar(255) DEFAULT NULL,
+  `datum_pocetka` date DEFAULT NULL,
+  `datum_zavrsetka` date DEFAULT NULL,
+  `cijena` double DEFAULT NULL,
+  `kolicina` int DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `sirovina_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sirovina_id` (`sirovina_id`),
+  CONSTRAINT `proizvodni_proces_ibfk_1` FOREIGN KEY (`sirovina_id`) REFERENCES `sirovine` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proizvodni_proces`
+--
+
+LOCK TABLES `proizvodni_proces` WRITE;
+/*!40000 ALTER TABLE `proizvodni_proces` DISABLE KEYS */;
+INSERT INTO `proizvodni_proces` VALUES (23,'Drugi proizvodni proces','2022-07-07',NULL,120,20,'2023-02-11 20:35:58','2023-02-11 20:35:58',8),(24,'Treci proizvodni proces','2023-02-19',NULL,200,50,'2023-02-11 20:36:20','2023-02-11 20:36:20',9),(25,'Prvi proizvodni proces','2022-11-18',NULL,120,20,'2023-02-11 20:43:44','2023-02-11 20:44:06',8),(27,'Cetvrti proizvodni proces','2023-02-08',NULL,80,2,'2023-02-11 20:46:24','2023-02-11 20:46:24',10);
+/*!40000 ALTER TABLE `proizvodni_proces` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sirovine`
+--
+
+DROP TABLE IF EXISTS `sirovine`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sirovine` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `naziv` varchar(255) DEFAULT NULL,
+  `kolicina` int DEFAULT NULL,
+  `min_kolicina` int DEFAULT NULL,
+  `cijena` double DEFAULT NULL,
+  `jedinica_mjere` varchar(255) DEFAULT NULL,
+  `da_li_se_koristi` tinyint(1) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `dobavljac_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dobavljac_id` (`dobavljac_id`),
+  CONSTRAINT `sirovine_ibfk_1` FOREIGN KEY (`dobavljac_id`) REFERENCES `dobavljaci` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sirovine`
+--
+
+LOCK TABLES `sirovine` WRITE;
+/*!40000 ALTER TABLE `sirovine` DISABLE KEYS */;
+INSERT INTO `sirovine` VALUES (8,'Druga sirovina',29,3,6,'mg',1,'2023-02-11 20:29:52','2023-02-11 20:29:52',4),(9,'Treca sirovina',67,4,4,'dg',1,'2023-02-11 20:32:47','2023-02-11 20:32:47',5),(10,'Prva sirovina',20,3,40,'ml',1,'2023-02-11 20:46:06','2023-02-11 20:46:06',3);
+/*!40000 ALTER TABLE `sirovine` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-02-11 21:57:36
